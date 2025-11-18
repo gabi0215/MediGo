@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  # PostgreSQL 데이터베이스
+  db:
+    image: postgres:15-alpine
+    container_name: medigo-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password  # 개발용 - 운영환경에서는 반드시 변경하세요
+      POSTGRES_DB: medigo_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - medigo-network
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ../docker/Dockerfile.backend
+    container_name: medigo-backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db:5432/medigo_db  # 개발용 - 운영환경에서는 반드시 변경하세요
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/app
+    networks:
+      - medigo-network
+
+  # OCR Service
+  ocr:
+    build:
+      context: ./ml
+      dockerfile: ../docker/Dockerfile.ocr
+    container_name: medigo-ocr
+    restart: always
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./ml:/app
+    networks:
+      - medigo-network
+
+  # Frontend (User App)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../docker/Dockerfile.frontend
+    container_name: medigo-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - medigo-network
+
+  # Admin Dashboard
+  admin:
+    build:
+      context: ./admin
+      dockerfile: ../docker/Dockerfile.admin
+    container_name: medigo-admin
+    restart: always
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./admin:/app
+      - /app/node_modules
+    networks:
+      - medigo-network
+
+volumes:
+  postgres_data:
+
+networks:
+  medigo-network:
+    driver: bridge
+

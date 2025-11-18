@@ -1,0 +1,29 @@
+{
+  "name": "medigo-admin",
+  "version": "1.0.0",
+  "description": "메디-고 관리자 대시보드",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "react-admin": "^4.16.8",
+    "@mui/material": "^5.14.20",
+    "@mui/icons-material": "^5.14.19",
+    "axios": "^1.6.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}
+

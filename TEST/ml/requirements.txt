@@ -1,0 +1,30 @@
+# ML/OCR Requirements - Python 3.13+ 완벽 호환
+
+# OCR
+easyocr>=1.7.2
+opencv-python>=4.10.0
+Pillow>=11.0.0
+
+# Deep Learning (CPU 버전)
+torch>=2.6.0
+torchvision>=0.21.0
+transformers>=4.48.0
+
+# API
+fastapi>=0.121.0
+uvicorn[standard]>=0.32.0
+pydantic>=2.10.0
+
+# AWS
+boto3>=1.40.0
+
+# Utilities
+numpy>=1.26.0
+python-dotenv>=1.0.0
+
+# Development
+pytest>=8.3.0
+
+# 참고: GPU 버전이 필요한 경우
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+

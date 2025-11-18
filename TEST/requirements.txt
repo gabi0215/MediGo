@@ -1,0 +1,89 @@
+# =============================================================================
+# 메디-고 (Medi-Go) - 전체 프로젝트 Requirements
+# Python 3.13+ 완벽 호환
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Backend (FastAPI) Dependencies
+# -----------------------------------------------------------------------------
+
+# FastAPI Core
+fastapi>=0.121.0
+uvicorn[standard]>=0.32.0
+pydantic>=2.10.0
+pydantic-settings>=2.7.0
+python-multipart>=0.0.20
+
+# Database
+sqlalchemy>=2.0.44
+psycopg2-binary>=2.9.10
+alembic>=1.17.0
+
+# Authentication & Security
+python-jose[cryptography]>=3.5.0
+passlib[bcrypt]>=1.7.4
+PyJWT>=2.10.0
+
+# HTTP Client
+httpx>=0.28.0
+
+# AWS
+boto3>=1.40.0
+botocore>=1.40.0
+
+# Image Processing (Python 3.13 호환)
+Pillow>=11.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+email-validator>=2.3.0
+
+# Testing
+pytest>=8.3.0
+pytest-asyncio>=0.24.0
+pytest-cov>=6.0.0
+
+# Development
+black>=24.11.0
+flake8>=7.1.0
+mypy>=1.14.0
+
+# -----------------------------------------------------------------------------
+# ML/OCR Dependencies (선택사항)
+# -----------------------------------------------------------------------------
+
+# OCR (Python 3.13 지원 - 업데이트된 버전)
+easyocr>=1.7.2
+opencv-python>=4.10.0
+
+# Deep Learning (CPU 버전 - 가벼움)
+torch>=2.6.0
+torchvision>=0.21.0
+transformers>=4.48.0
+
+# Scientific Computing
+numpy>=1.26.0
+
+# -----------------------------------------------------------------------------
+# 참고사항
+# -----------------------------------------------------------------------------
+# 1. torch GPU 버전이 필요한 경우:
+#    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+# 
+# 2. ML 없이 Backend만 설치:
+#    pip install fastapi uvicorn sqlalchemy psycopg2-binary python-dotenv pydantic
+#
+# 3. 전체 설치:
+#    pip install -r requirements.txt
+
+# =============================================================================
+# 설치 방법:
+# 
+# 전체 설치:
+#   pip install -r requirements.txt
+#
+# 또는 개별 설치:
+#   pip install -r backend/requirements.txt
+#   pip install -r ml/requirements.txt
+# =============================================================================
+
